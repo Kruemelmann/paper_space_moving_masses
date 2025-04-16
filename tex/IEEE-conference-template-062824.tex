@@ -27,7 +27,7 @@ Tromsø, Norway }
 \maketitle
 
 \begin{abstract}
-    TODO abstract
+This study explores the impact of internal mass shifts on the orbital dynamics of a satellite in a gravitational field. Using a simplified model with a movable inner mass, the research examines how such shifts, driven by a solar-powered electric motor, influence the satellite's trajectory over time. The results show that even small changes in mass distribution can lead to significant alterations in the orbit, offering insights for satellite systems with movable internal components. Numerical simulations based on Newton’s law of gravitation and the Runge-Kutta method are used to track the satellite's motion and demonstrate the long-term effects of these mass displacements.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -36,38 +36,38 @@ Tromsø, Norway }
 
 \section{Einleitung}
 
-Die Lebensdauer moderner Satelliten wird maßgeblich durch die verfügbare Menge an Treibstoff bestimmt. Dieser wird nicht nur für Bahnmanöver und Kurskorrekturen benötigt, sondern oft auch zur Stabilisierung und Lagekontrolle. Ist der Treibstoff aufgebraucht, endet in vielen Fällen der operative Betrieb, obwohl alle anderen Systeme weiterhin funktionsfähig wären.
+The lifespan of modern satellites is largely determined by the amount of fuel available. This fuel is not only required for orbital maneuvers and course corrections but is often also used for stabilization and attitude control. Once the fuel is depleted, operational activity often ceases, even though all other systems may still be fully functional.
 
-Vor diesem Hintergrund wird nach alternativen Methoden gesucht, um Steuerungs- oder Bahnbeeinflussungseffekte ohne aktiven Treibstoffverbrauch zu realisieren. Eine vielversprechende Idee besteht darin, interne Masseverlagerungen gezielt zu nutzen, um über Trägheits- und Gravitationseffekte die Bahn oder Ausrichtung eines Satelliten zu beeinflussen. In dieser Arbeit wird untersucht, welchen Einfluss die Position einer beweglichen internen Masse auf den Orbit eines Körpers im Gravitationsfeld eines Zentralkörpers hat.
+Against this backdrop, alternative methods are being explored to achieve control or orbit-modifying effects without active fuel consumption. One promising idea is to deliberately use internal mass shifts to influence a satellite’s orbit or orientation through inertia and gravitational effects. This study investigates how the position of a movable internal mass affects the orbit of a body within the gravitational field of a central body.
 
 \section{Theoretische Grundlagen}
 
-Die physikalische Grundlage der vorliegenden Untersuchung beruht auf mehreren zentralen Prinzipien der klassischen Mechanik. Zunächst gilt in einem abgeschlossenen System ohne äußere Kräfte das \textit{Gesetz der Impulserhaltung}: Der Gesamtimpuls bleibt konstant, selbst wenn sich Massen innerhalb des Systems bewegen \cite{goldstein}. Dies bedeutet, dass die Verschiebung einer internen Masse -- etwa durch einen Elektromotor innerhalb eines Zylinders -- den Gesamtschwerpunkt des Systems nicht verändert, solange keine äußere Kraft wirkt.
+The physical foundation of this study is based on several fundamental principles of classical mechanics. First, in a closed system with no external forces, the law of conservation of momentum applies: the total momentum remains constant, even when masses move within the system \cite{goldstein}. This means that shifting an internal mass — for example, via an electric motor inside a cylinder — does not change the system’s overall center of mass as long as no external force is acting on it.
 
-Darüber hinaus bewegt sich der Schwerpunkt eines ausgedehnten Körpers in einem Gravitationsfeld so, als wäre die gesamte Masse in diesem Punkt konzentriert \cite{taylor, landau}. Dies erlaubt es, die Bahn des Systems zu berechnen, ohne die interne Massenverteilung direkt berücksichtigen zu müssen, solange das äußere Feld näherungsweise als zentral betrachtet werden kann.
+Moreover, the center of mass of an extended body in a gravitational field moves as if the entire mass were concentrated at that point \cite{taylor, landau}. This allows the trajectory of the system to be calculated without directly considering the internal mass distribution, as long as the external field can be approximately treated as central.
 
-Ein zentrales Ergebnis ist, dass innere Massenverlagerungen die Bahn eines abgeschlossenen Systems im Gravitationsfeld nicht beeinflussen, sondern lediglich dessen Rotationsdynamik ändern können. Dies ist in der Raumfahrttechnik bekannt, etwa bei Satelliten mit Reaktionsrädern oder verschiebbarem Treibstoff \cite{marion}.
+A key result is that internal mass shifts do not affect the orbit of a closed system in a gravitational field, but can only alter its rotational dynamics. This is well known in aerospace engineering, for example in satellites equipped with reaction wheels or movable fuel tanks \cite{marion}.
 
-Schließlich liefert das \textit{Noether-Theorem} eine tiefere theoretische Begründung: Es stellt den Zusammenhang zwischen Symmetrien und Erhaltungsgrößen her. So führt Translationssymmetrie zur Impulserhaltung, Rotationssymmetrie zur Erhaltung des Drehimpulses \cite{noether}.
+Finally, Noether’s theorem provides a deeper theoretical foundation: it establishes the connection between symmetries and conserved quantities. For instance, translational symmetry leads to momentum conservation, while rotational symmetry leads to the conservation of angular momentum \cite{noether}.
 
 
 
 
 \section{Gravitationskraft}
 
-Die Gravitationskraft auf ein Objekt mit Masse \( m \) im Feld eines zentralen Körpers mit Masse \( M \) ergibt sich zu:
+The gravitational force on an object with mass \( m \) in the field of a central body with mass \( M \) is given by:
 
 \[
 \vec{F}_\text{grav} = -G \cdot \frac{M \cdot m}{r^2} \cdot \hat{r}
 \]
 
-Dabei ist:
+Where:
 \begin{itemize}
-  \item \( G \): Gravitationskonstante
-  \item \( M \): Masse des Zentralkörpers
-  \item \( m \): Masse des umlaufenden Körpers (Zylinder + Gewicht)
-  \item \( r \): Abstand zwischen dem Schwerpunkt des Körpers und dem Zentrum
-  \item \( \hat{r} \): Einheitsvektor vom Schwerpunkt zum Zentralkörper
+  \item \( G \): Gravitational constant
+  \item \( M \): Mass of the central body
+  \item \( m \): Mass of the orbiting body (cylinder + weight)
+  \item \( r \): Distance between the center of mass of the body and the center of the central body
+  \item \( \hat{r} \): Unit vector pointing from the body’s center of mass to the central body
 \end{itemize}
 
 
@@ -81,17 +81,17 @@ Dabei ist:
 \end{figure}
 
 
-Die Abbildung~\ref{fig:abstract_model} zeigt ein vereinfachtes Modell eines rotationssymmetrischen Körpers, bestehend aus einem größeren äußeren Zylinder, der einen kleineren, beweglichen Innenzylinder enthält. In der schematischen Darstellung sind lediglich die geometrischen Grundstrukturen wiedergegeben. Nicht sichtbar ist der technische Mechanismus zur Verlagerung der inneren Masse: Der Innenzylinder ist auf einem Gewinde gelagert und kann entlang der Zylinderachse verschoben werden. Die Verschiebung erfolgt durch einen kompakten Elektromotor, der ohne konventionellen Treibstoff auskommt. Stattdessen wird der Motor ausschließlich durch Sonnenenergie betrieben, welche über am äußeren Zylinder montierte Solarzellen aufgenommen und in elektrische Energie umgewandelt wird.
+Figure~\ref{fig:abstract_model} shows a simplified model of a rotationally symmetric body, consisting of a larger outer cylinder that contains a smaller, movable inner cylinder. The schematic representation includes only the basic geometric structures. The technical mechanism for shifting the internal mass is not shown: the inner cylinder is mounted on a threaded shaft and can be moved along the cylinder axis. The displacement is driven by a compact electric motor that operates without conventional fuel. Instead, the motor is powered solely by solar energy, which is captured by solar panels mounted on the outer cylinder and converted into electrical energy.
 
 
 \section{Schwerpunkt des Systems}
-Das Gesamtsystem besteht aus:
+The complete system consists of:
 \begin{itemize}
-  \item Zylinderhülle mit Masse \( m_\text{body} = 9 \)
-  \item Bewegliches Gewicht mit Masse \( m_\text{payload} = 1 \)
+  \item Cylindrical shell with mass \( m_\text{body} = 9 \)
+  \item Movable weight with mass \( m_\text{payload} = 1 \)
 \end{itemize}
 
-Die Schwerpunktposition ergibt sich zu:
+The position of the center of mass is given by:
 
 \[
 \vec{r}_\text{cm} = \frac{m_\text{body} \cdot \vec{r}_\text{body} + m_\text{payload} \cdot \vec{r}_\text{payload}}{m_\text{body} + m_\text{payload}}
@@ -99,19 +99,19 @@ Die Schwerpunktposition ergibt sich zu:
 
 \subsection*{Fall: Gewicht weiter entfernt vom Planeten}
 
-Gegeben:
+Given:
 \[
 \vec{r}_\text{body} = (10, 0), \quad \vec{r}_\text{payload} = (11, 0)
 \]
 
-Dann:
+Required:
 \[
 \vec{r}_\text{cm} = \frac{9 \cdot (10, 0) + 1 \cdot (11, 0)}{10} = (10.1, 0)
 \]
 
 \section{Gravitationskraft auf den Schwerpunkt}
 
-Zentralmasse: \( M = 1000 \), Gesamtmasse: \( m = 10 \), Abstand: \( r = 10.1 \)
+Central mass: \( M = 1000 \), total mass: \( m = 10 \), distance: \( r = 10.1 \), Gravitational constant: \( G = 1 \)
 
 \[
 \vec{F} = - G \cdot \frac{M \cdot m}{r^2} \cdot \frac{\vec{r}_\text{cm}}{r}
@@ -147,32 +147,32 @@ Zentralmasse: \( M = 1000 \), Gesamtmasse: \( m = 10 \), Abstand: \( r = 10.1 \)
     \label{fig:orbits}
 \end{figure}
 
-Die in Abbildung~\ref{fig:orbits} dargestellten Trajektorien zeigen deutlich, dass sich die Umlaufbahn des Körpers in Abhängigkeit von der Lage der internen Masse leicht verändert. Obwohl sich die Gesamtmasse des Systems nicht ändert, führt die Verlagerung des Schwerpunkts zu veränderten Anfangsbeschleunigungen und infolgedessen zu unterschiedlichen Bahnverläufen.
+The trajectories shown in Figure~\ref{fig:orbits} clearly demonstrate that the orbit of the body changes slightly depending on the position of the internal mass. Although the total mass of the system remains unchanged, the shift in the center of mass leads to altered initial accelerations, and consequently, to different orbital paths.
 
-Besonders auffällig ist die Bahn bei planetennaher Position des Gewichts (orangefarbene Kurve): Diese weist stärkere Bahnkrümmungen auf, was auf höhere Gravitationsbeschleunigungen bei näherem Schwerpunkt zurückzuführen ist. Die Bahn wirkt instabiler und oszilliert stärker, was über längere Zeiträume zu einer merklich anderen Umlaufdynamik führen kann.
+The most noticeable orbit is the one with the weight near the planet (orange curve): it exhibits stronger orbital curvatures, which can be attributed to higher gravitational accelerations with a closer center of mass. The orbit appears more unstable and oscillates more, which over longer periods can lead to a noticeably different orbital dynamics.
 
-Im Gegensatz dazu zeigt die grüne Kurve (Gewicht planetenfern) einen etwas flacheren und stabileren Orbit mit größerem Apogäum. Der Schwerpunkt liegt hier weiter vom Zentralkörper entfernt, was die Gravitationskraft reduziert und somit die Bahn weitet.
+In contrast, the green curve (weight far from the planet) shows a slightly flatter and more stable orbit with a larger apogee. The center of mass is farther from the central body, reducing the gravitational force and thus widening the orbit.
 
-Die mittlere Konfiguration (blau) dient als Referenz. Sie zeigt einen symmetrischeren Orbit, da hier der Schwerpunkt des Systems mit dem geometrischen Mittelpunkt des Zylinders übereinstimmt.
+The middle configuration (blue) serves as a reference. It shows a more symmetric orbit, as the center of mass of the system coincides with the geometric center of the cylinder.
 
-Diese Resultate zeigen, dass bereits kleine Variationen der internen Masseverteilung zu langfristig signifikanten Unterschieden im Bewegungsverlauf führen können, was insbesondere für präzise Navigation oder Bahnkontrolle von Bedeutung ist – etwa bei Satelliten mit beweglicher interner Masse (z.\,B. Treibstoffverlagerung, mobile Nutzlasten).
+These results demonstrate that even small variations in the internal mass distribution can lead to significant long-term differences in the motion, which is particularly important for precise navigation or orbit control — such as in satellites with movable internal mass (e.g., fuel shifting, mobile payloads).
 
 
 \subsection{Numerische Simulation der Satellitenbewegung}
 -LINK ZU GITHUB MIT CODE-
 
-Die Simulation der Satellitenbewegung basiert auf dem Gravitationsgesetz von Newton, mit dem die Gravitationskraft zwischen Erde und Satellit bestimmt wird. Zur Integration der Bewegung über die Zeit wird das klassische Runge-Kutta-Verfahren verwendet, welches sich durch hohe Genauigkeit bei der numerischen Berechnung von Position und Geschwindigkeit auszeichnet. In jedem Zeitschritt werden die aktuellen Positions- und Geschwindigkeitswerte des Satelliten mithilfe dieser Methode aktualisiert, sodass sich über die Zeit eine Bahn ergibt, die anschließend visualisiert wird.
+The simulation of the satellite motion is based on Newton's law of gravitation, which determines the gravitational force between the Earth and the satellite. To integrate the motion over time, the classical Runge-Kutta method is used, which is known for its high accuracy in numerically calculating position and velocity. In each time step, the current position and velocity values of the satellite are updated using this method, so that over time an orbit is generated, which is then visualized.
 
 
 \section{Fazit}
 
-Durch die wiederholte Anwendung von:
+By repeatedly applying:
 \begin{itemize}
-  \item Schwerpunktberechnung
-  \item Gravitationskraft auf den Schwerpunkt
-  \item Integration der Bewegung (Position, Geschwindigkeit)
+  \item Center of mass calculation
+  \item Gravitational force on the center of mass
+  \item Integration of motion (position, velocity)
 \end{itemize}
-ergibt sich die Bahn des Körpers. Verschiebt sich der interne Schwerpunkt (z.\,B. durch Bewegung der Masse), beeinflusst dies leicht die Bahn – besonders über viele Umläufe hinweg.
+the orbit of the body is determined. If the internal center of mass shifts (e.g., due to the movement of mass), it slightly affects the orbit — especially over many orbits.
 
 \begin{thebibliography}{9}
 
