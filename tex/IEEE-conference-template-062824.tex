@@ -164,6 +164,93 @@ These results demonstrate that even small variations in the internal mass distri
 The simulation of the satellite motion is based on Newton's law of gravitation, which determines the gravitational force between the Earth and the satellite. To integrate the motion over time, the classical Runge-Kutta method is used, which is known for its high accuracy in numerically calculating position and velocity. In each time step, the current position and velocity values of the satellite are updated using this method, so that over time an orbit is generated, which is then visualized.
 
 
+\section{Analysis of Center of Mass and Angular Momentum Changes due to Internal Mass Redistribution}
+
+\subsection{Given Constants}
+
+\begin{itemize}
+  \item \( G \): Gravitational constant
+  \item \( M \): Mass of Earth
+  \item \( m_\text{sat} \): Mass of the satellite body
+  \item \( m_\text{payload} \): Mass of the movable internal weight
+  \item \( r \): Mean distance to Earth's center
+  \item \( L \): Length of the internal tube
+  \item \( T \): Orbital period
+\end{itemize}
+\begin{align*}
+G &= 6.67430 \times 10^{-11} \; \text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2} \\
+M &= 5.972 \times 10^{24} \; \text{kg}  \\
+m_\text{sat} &= 1 \; \text{kg}  \\
+m_\text{payload} &= 1 \; \text{kg} \\
+r &= 7.0 \times 10^6 \; \text{m}  \\
+L &= 2.0 \; \text{m}  \\
+T &= 5400 \; \text{s} && \text{(90 minutes)}
+\end{align*}
+
+\subsection{Orbital Speed}
+The orbital speed $v$ at a circular orbit is computed by:
+\[
+v = \sqrt{\frac{GM}{r}} = \sqrt{\frac{6.67430 \times 10^{-11} \cdot 5.972 \times 10^{24}}{7.0 \times 10^6}} \approx 7546 \; \text{m/s}
+\]
+
+\subsection{Computation of Center of Mass}
+Assuming the satellite mass is $m_\text{sat}$ and the payload can move along the radial direction with offset $\Delta r$, the center of mass becomes:
+\[
+r_\text{com} = \frac{m_\text{sat} \cdot r + m_\text{payload} \cdot (r + \Delta r)}{m_\text{sat} + m_\text{payload}}
+\]
+
+We evaluate for three positions:
+
+\begin{itemize}
+  \item \textbf{Payload at the bottom} ($\Delta r = -1.0 \, \text{m}$):
+  \[
+  r_\text{com} = \frac{7.0 \times 10^6 + (7.0 \times 10^6 - 1)}{2} = 3,499,999.5 \; \text{m}
+  \]
+  The center of mass is slightly closer to Earth.
+
+  \item \textbf{Payload centered} ($\Delta r = 0.0 \, \text{m}$):
+  \[
+  r_\text{com} = \frac{7.0 \times 10^6 + 7.0 \times 10^6}{2} = 3,500,000 \; \text{m}
+  \]
+  Both masses are at equal distance, so the center is in the middle.
+
+  \item \textbf{Payload at the top} ($\Delta r = +1.0 \, \text{m}$):
+  \[
+  r_\text{com} = \frac{7.0 \times 10^6 + (7.0 \times 10^6 + 1)}{2} = 3,500,000.5 \; \text{m}
+  \]
+  The center of mass shifts slightly outward.
+\end{itemize}
+
+\subsection{Angular Momentum}
+The angular momentum $L$ of a satellite in circular orbit is:
+\[
+L = m \cdot r \cdot v
+\]
+
+We calculate this for each case:
+
+\begin{itemize}
+  \item \textbf{Payload at bottom:}
+  \[
+  L_\text{bottom} = 3,499,999.5 \cdot 7546 \approx 2.6410817713 \times 10^7 \; \text{kg} \cdot \text{m}^2/\text{s}
+  \]
+  A slightly smaller radius yields higher centripetal force demand.
+
+  \item \textbf{Payload centered:}
+  \[
+  L_\text{middle} = 3,500,000 \cdot 7546 \approx 2.6410813940 \times 10^7 \; \text{kg} \cdot \text{m}^2/\text{s}
+  \]
+
+  \item \textbf{Payload at top:}
+  \[
+  L_\text{top} = 3,500,000.5 \cdot 7546 \approx 2.6410810168 \times 10^7 \; \text{kg} \cdot \text{m}^2/\text{s}
+  \]
+  The farther the mass, the more angular momentum is required for the same orbital speed.
+\end{itemize}
+
+\section{TODO}
+TODO
+
 \section{Fazit}
 
 By repeatedly applying:
