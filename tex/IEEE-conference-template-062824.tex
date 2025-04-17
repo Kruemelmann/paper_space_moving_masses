@@ -4,6 +4,7 @@
 %Template version as of 6/27/2024
 
 \usepackage{cite}
+\usepackage[most]{tcolorbox}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
@@ -177,6 +178,8 @@ The simulation of the satellite motion is based on Newton's law of gravitation, 
   \item \( L \): Length of the internal tube
   \item \( T \): Orbital period
 \end{itemize}
+
+
 \begin{align*}
 G &= 6.67430 \times 10^{-11} \; \text{m}^3\,\text{kg}^{-1}\,\text{s}^{-2} \\
 M &= 5.972 \times 10^{24} \; \text{kg}  \\
@@ -280,5 +283,40 @@ Noether, E. (1918). Invariante Variationsprobleme. \textit{Nachrichten von der G
 
 \end{thebibliography}
 
+
+\section*{Appendix}
+
+\begin{tcolorbox}[title=Note: Units of the Gravitational Constant \( G \), colback=blue!5!white, colframe=blue!75!black]
+The gravitational force between two point masses is given by Newton's law:
+
+\[
+F = G \cdot \frac{m_1 m_2}{r^2}
+\]
+
+Solving for \( G \):
+
+\[
+G = \frac{F \cdot r^2}{m_1 \cdot m_2}
+\]
+
+Substituting SI units:
+
+\[
+[F] = \text{N} = \text{kg} \cdot \frac{\text{m}}{\text{s}^2}, \quad [r] = \text{m}, \quad [m_1], [m_2] = \text{kg}
+\]
+
+Thus:
+
+\[
+[G] = \frac{\left( \text{kg} \cdot \frac{\text{m}}{\text{s}^2} \right) \cdot \text{m}^2}{\text{kg}^2}
+= \frac{\text{kg} \cdot \text{m}^3}{\text{kg}^2 \cdot \text{s}^2}
+= \text{m}^3 \cdot \text{kg}^{-1} \cdot \text{s}^{-2}
+\]
+
+Therefore, the unit of \( G \) is:
+\[
+[G] = \text{m}^3 \cdot \text{kg}^{-1} \cdot \text{s}^{-2}
+\]
+\end{tcolorbox}
 
 \end{document}
